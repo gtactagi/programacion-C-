@@ -1,0 +1,253 @@
+Definición de Clases y Conceptos de POO
+
+
+Clase: Un plano o plantilla para crear objetos. Define atributos y métodos.
+
+Objeto: Una instancia de una clase.
+
+Atributos y Métodos
+Atributos: Variables que definen el estado del objeto.(Características)
+Métodos: Funciones que definen el comportamiento del objeto.(acciones)
+
+Herencia
+Permite crear una nueva clase a partir de una existente, heredando sus atributos y métodos.
+
+Polimorfismo
+
+Permite que una función o método tenga diferentes implementaciones según el tipo de objeto.(ante una misma accion lo ahcen diferente)
+
+Constructor: Función especial que se llama al crear un objeto.
+
+Destructor: Función especial que se llama al destruir un objeto.
+
+Getters y Setters
+
+Métodos que permiten acceder y modificar los atributos privados de una clase.
+
+Codigo para un fragmento de juego de tiros(estilo doom o duke 3D)
+
+A continuación, se muestra un código en C++ que implementa un juego de tiros con dos niveles, utilizando todos los conceptos mencionados.
+
+#include <iostream>
+#include <vector>
+#include <memory>
+
+using namespace std;
+
+// Clase base para Personaje
+class Personaje {
+protected:
+    int vida;
+    int ataque;
+
+public:
+    Personaje(int v, int a) : vida(v), ataque(a) {}
+    
+    virtual void recibirDisparo(int daño) {
+        vida -= daño;
+        if (vida < 0) vida = 0;
+    }
+
+    virtual void mostrarEstado() const {
+        cout << "Vida: " << vida << ", Ataque: " << ataque << endl;
+    }
+
+    virtual ~Personaje() {}  // Destructor virtual
+};
+
+// Subclase Protagonista
+class Protagonista : public Personaje {
+private:
+    int itemsRecogidos;
+
+public:
+    Protagonista(int v, int a) : Personaje(v, a), itemsRecogidos(0) {}
+
+    void recogerItem(const string& item) {
+        if (item == "medicina") {
+            vida += 20;
+        } else if (item == "balas") {
+            ataque += 10;
+        } else if (item == "jetpack") {
+            cout << "Jetpack recogido! Mejora de movilidad." << endl;
+        }
+        itemsRecogidos++;
+    }
+
+    void mostrarEstado() const override {
+        cout << "Protagonista - ";
+        Personaje::mostrarEstado();
+        cout << "Items recogidos: " << itemsRecogidos << endl;
+    }
+};
+
+// Subclase Enemigo
+class Enemigo : public Personaje {
+public:
+    Enemigo(int v, int a) : Personaje(v, a) {}
+
+    void recibirDisparo(int daño) override {
+        vida -= daño / 2;  // Los enemigos tienen menos resistencia a los disparos
+        if (vida < 0) vida = 0;
+    }
+
+    void mostrarEstado() const override {
+        cout << "Enemigo - ";
+        Personaje::mostrarEstado();
+    }
+};
+
+// Clase base para Arma
+class Arma {
+public:
+    virtual void disparar() const = 0;  // Método virtual puro
+    virtual ~Arma() {}
+};
+
+// Subclase Pistola
+class Pistola : public Arma {
+public:
+    void disparar() const override {
+        cout << "Disparo con pistola!" << endl;
+    }
+};
+
+// Subclase Escopeta
+class Escopeta : public Arma {
+public:
+    void disparar() const override {
+        cout << "Disparo con escopeta!" << endl;
+    }
+};
+
+// Subclase Cuchillo
+class Cuchillo : public Arma {
+public:
+    void disparar() const override {
+        cout << "Ataque con cuchillo!" << endl;
+    }
+};
+
+// Subclase Rifle
+class Rifle : public Arma {
+public:
+    void disparar() const override {
+        cout << "Disparo con rifle!" << endl;
+    }
+};
+
+// Clase base para Nivel
+class Nivel {
+protected:
+    vector<unique_ptr<Personaje>> personajes;
+
+public:
+    virtual void agregarPersonaje(unique_ptr<Personaje> p) {
+        personajes.push_back(move(p));
+    }
+
+    virtual void iniciarNivel() {
+        cout << "Nivel iniciado." << endl;
+    }
+
+    virtual ~Nivel() {
+        personajes.clear();  // Destructor para liberar memoria
+    }
+};
+
+// Subclase Nivel1
+class Nivel1 : public Nivel {
+public:
+    void iniciarNivel() override {
+        Nivel::iniciarNivel();
+        cout << "Nivel 1: Tutorial básico." << endl;
+    }
+
+    ~Nivel1() {
+        // Destructor para nivel 1
+        cout << "Destruyendo nivel 1." << endl;
+    }
+};
+
+// Subclase Nivel2
+class Nivel2 : public Nivel1 {
+public:
+    void iniciarNivel() override {
+        Nivel1::iniciarNivel();
+        cout << "Nivel 2: Desafío aumentado." << endl;
+    }
+
+    ~Nivel2() {
+        // Destructor para nivel 2
+        cout << "Destruyendo nivel 2." << endl;
+    }
+};
+
+// Clase Item
+class Item {
+public:
+    virtual void usar(Protagonista& p) const = 0;
+    virtual ~Item() {}
+};
+
+// Subclase Medicina
+class Medicina : public Item {
+public:
+    void usar(Protagonista& p) const override {
+        p.recogerItem("medicina");
+        cout << "Medicina usada." << endl;
+    }
+};
+
+// Subclase Balas
+class Balas : public Item {
+public:
+    void usar(Protagonista& p) const override {
+        p.recogerItem("balas");
+        cout << "Balas recogidas." << endl;
+    }
+};
+
+// Subclase Jetpack
+class Jetpack : public Item {
+public:
+    void usar(Protagonista& p) const override {
+        p.recogerItem("jetpack");
+        cout << "Jetpack usado." << endl;
+    }
+};
+
+int main() {
+    // Crear instancias de personajes y armas
+    Protagonista protagonista(100, 20);
+    Enemigo enemigo(80, 15);
+
+    // Crear y usar armas
+    unique_ptr<Arma> pistola = make_unique<Pistola>();
+    unique_ptr<Arma> escopeta = make_unique<Escopeta>();
+
+    pistola->disparar();
+    escopeta->disparar();
+
+    // Crear y usar items
+    unique_ptr<Item> medicina = make_unique<Medicina>();
+    unique_ptr<Item> balas = make_unique<Balas>();
+
+    medicina->usar(protagonista);
+    balas->usar(protagonista);
+
+    // Crear y ejecutar niveles
+    unique_ptr<Nivel> nivel1 = make_unique<Nivel1>();
+    unique_ptr<Nivel> nivel2 = make_unique<Nivel2>();
+
+    nivel1->agregarPersonaje(make_unique<Protagonista>(protagonista));
+    nivel1->agregarPersonaje(make_unique<Enemigo>(enemigo));
+    nivel1->iniciarNivel();
+
+    nivel2->agregarPersonaje(make_unique<Protagonista>(protagonista));
+    nivel2->agregarPersonaje(make_unique<Enemigo>(enemigo));
+    nivel2->iniciarNivel();
+
+    return 0;
+}
+

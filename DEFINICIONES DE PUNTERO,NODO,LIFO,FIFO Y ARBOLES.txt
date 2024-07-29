@@ -1,0 +1,249 @@
+PUNTEROS:
+En C++, un puntero es una variable que almacena la dirección de memoria de otra variable. Los punteros son una característica fundamental del lenguaje que permite manipular la memoria directamente y realizar operaciones avanzadas, como la gestión dinámica de memoria y el acceso a arrays.
+
+Definición de Puntero
+Un puntero se define especificando el tipo de variable a la que apunta seguido de un asterisco (*). La sintaxis general es:
+
+tipo_de_dato* nombre_del_puntero;
+
+Ejemplo
+Para definir puntero, mostrar su posicion de memoria, cambiar su valor y mostrar nuevo valor de variable
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int variable = 10; // Definimos una variable de tipo entero
+    int* puntero = &variable; // Definimos un puntero que apunta a la dirección de memoria de 'variable'
+
+    // Mostrar la dirección de memoria de la variable
+    cout << "Dirección de memoria de 'variable': " << &variable << endl;
+
+    // Mostrar la dirección de memoria almacenada en el puntero
+    cout << "Dirección de memoria almacenada en 'puntero': " << puntero << endl;
+
+    // Mostrar el valor de la variable usando el puntero
+    cout << "Valor de 'variable' a través del puntero: " << *puntero << endl;
+
+    // Cambiar el valor de la variable a través del puntero
+    *puntero = 20;
+
+    // Mostrar el nuevo valor de la variable
+    cout << "Nuevo valor de 'variable' a través del puntero: " << *puntero << endl;
+    cout << "Nuevo valor de 'variable': " << variable << endl;
+
+    return 0;
+}
+
+NODOS:
+En programación, un nodo es una unidad de datos que puede formar parte de una estructura de datos más compleja, como una lista enlazada, una pila, una cola o un árbol. Cada nodo generalmente contiene un valor y uno o más punteros que apuntan a otros nodos.
+
+Definición de Nodo
+Un nodo típicamente tiene la siguiente estructura:
+
+Valor (Data): El dato que el nodo almacena.
+Puntero(s) (Link): Punteros que referencian a otros nodos en la estructura
+
+Nodos apra formar lista enlazada:
+#include <iostream>
+
+using namespace std;
+
+// Definición de la estructura Nodo
+struct Nodo {
+    int dato;        // Valor del nodo
+    Nodo* siguiente; // Puntero al siguiente nodo
+
+    // Constructor para inicializar el nodo
+    Nodo(int valor) : dato(valor), siguiente(nullptr) {}
+};
+
+// Función para imprimir la lista enlazada
+void imprimirLista(Nodo* cabeza) {
+    Nodo* actual = cabeza;
+    while (actual != nullptr) {
+        cout << actual->dato << " ";
+        actual = actual->siguiente;
+    }
+    cout << endl;
+}
+
+int main() {
+    // Crear nodos
+    Nodo* nodo1 = new Nodo(1);
+    Nodo* nodo2 = new Nodo(2);
+    Nodo* nodo3 = new Nodo(3);
+
+    // Enlazar los nodos
+    nodo1->siguiente = nodo2;
+    nodo2->siguiente = nodo3;
+
+    // Imprimir la lista
+    cout << "Lista enlazada: ";
+    imprimirLista(nodo1);
+
+    // Liberar la memoria de los nodos
+    delete nodo1;
+    delete nodo2;
+    delete nodo3;
+
+    return 0;
+}
+
+PILAS O LIFO: (Last In, First Out)
+Definición
+LIFO es una estructura de datos en la que el último elemento añadido es el primero en ser removido. Esta estructura es comúnmente conocida como pila.
+
+Uso Común
+Deshacer operaciones en aplicaciones (como editores de texto).
+
+#include <iostream>
+#include <stack> // Biblioteca estándar para pilas
+
+using namespace std;
+
+int main() {
+    stack<int> pila; // Crear una pila de enteros
+
+    // Agregar un dato a la pila
+    pila.push(10);
+
+    // Mostrar el dato en la cima de la pila
+    cout << "Elemento en la cima de la pila: " << pila.top() << endl;
+
+    return 0;
+}
+
+COLA O FIFO:(First In, First Out)
+Definición
+FIFO es una estructura de datos en la que el primer elemento añadido es el primero en ser removido. Esta estructura es comúnmente conocida como cola.
+
+Uso Común
+Colas de impresión en sistemas operativos.
+
+#include <iostream>
+#include <queue> // Biblioteca estándar para colas
+
+using namespace std;
+
+int main() {
+    queue<int> cola; // Crear una cola de enteros
+
+    // Agregar un dato a la cola
+    cola.push(20);
+
+    // Mostrar el dato al frente de la cola
+    cout << "Elemento en la frente de la cola: " << cola.front() << endl;
+
+    return 0;
+}
+
+ARBOLES:
+
+Definición de Árboles y Conceptos Básicos
+Un árbol es una estructura de datos jerárquica en la que cada elemento, llamado nodo, puede tener cero o más nodos hijos. Los árboles se utilizan para representar datos con una relación jerárquica o estructurada.
+
+Conceptos Clave
+
+Nodo Raíz:
+
+El nodo superior del árbol. Es el punto de partida de la estructura del árbol. Un árbol tiene exactamente un nodo raíz.
+Altura:
+
+La altura de un árbol es la longitud del camino más largo desde la raíz hasta una hoja. Es el número máximo de niveles en el árbol, donde el nivel de la raíz es 0.
+Profundidad:
+
+La profundidad de un nodo es la longitud del camino desde la raíz hasta ese nodo. La profundidad de la raíz es 0.
+Hojas:
+
+Los nodos que no tienen hijos. Son los nodos terminales en el árbol.
+Nodo Hijo:
+
+Un nodo que es descendiente directo de otro nodo. El nodo del que desciende se llama nodo padre.
+Orden:
+
+El número máximo de hijos que puede tener un nodo en un árbol. En un árbol binario, el orden es 2 (cada nodo puede tener hasta dos hijos).
+
+Árboles Binarios de Búsqueda
+Un árbol binario de búsqueda (BST) es un tipo especial de árbol binario en el que, para cada nodo:
+
+Todos los nodos en el subárbol izquierdo tienen valores menores que el nodo.
+Todos los nodos en el subárbol derecho tienen valores mayores que el nodo.
+
+Tipos de Recorridos de un Árbol Binario:
+
+Recorrido en Preorden (Preorder Traversal)
+
+Definición: En el recorrido en preorden, se visita el nodo raíz antes de visitar sus nodos hijos. Primero se procesa el nodo raíz, luego el subárbol izquierdo, y finalmente el subárbol derecho.
+Orden de Visita: Nodo raíz → Subárbol izquierdo → Subárbol derecho
+
+Recorrido en Inorden (Inorder Traversal)
+
+Definición: En el recorrido en inorden, se visita el nodo raíz después de haber visitado su subárbol izquierdo, y antes de visitar su subárbol derecho. En un árbol binario de búsqueda, el recorrido en inorden produce una secuencia de valores ordenada.
+Orden de Visita: Subárbol izquierdo → Nodo raíz → Subárbol derecho
+
+Recorrido en Postorden (Postorder Traversal)
+
+Definición: En el recorrido en postorden, se visita el nodo raíz después de haber visitado ambos subárboles izquierdo y derecho. Primero se procesan los nodos hijos antes de procesar el nodo raíz.
+Orden de Visita: Subárbol izquierdo → Subárbol derecho → Nodo raíz
+
+
+CREAR ARBOL Y MOSTRARLO EN ORDEN
+#include <iostream>
+
+using namespace std;
+
+// Definición de la estructura Nodo del árbol binario
+struct Nodo {
+    int dato;
+    Nodo* izquierdo;
+    Nodo* derecho;
+
+    Nodo(int valor) : dato(valor), izquierdo(nullptr), derecho(nullptr) {}
+};
+
+// Función para insertar un nuevo nodo en el árbol binario de búsqueda
+Nodo* insertar(Nodo* raiz, int valor) {
+    if (raiz == nullptr) {
+        return new Nodo(valor);
+    }
+    if (valor < raiz->dato) {
+        raiz->izquierdo = insertar(raiz->izquierdo, valor);
+    } else {
+        raiz->derecho = insertar(raiz->derecho, valor);
+    }
+    return raiz;
+}
+
+// Función para realizar un recorrido en orden del árbol
+void recorrerEnOrden(Nodo* raiz) {
+    if (raiz != nullptr) {
+        recorrerEnOrden(raiz->izquierdo);
+        cout << raiz->dato << " ";
+        recorrerEnOrden(raiz->derecho);
+    }
+}
+
+int main() {
+    Nodo* raiz = nullptr; // Crear un árbol vacío
+
+    // Insertar datos en el árbol binario de búsqueda
+    raiz = insertar(raiz, 50);
+    insertar(raiz, 30);
+    insertar(raiz, 70);
+    insertar(raiz, 20);
+    insertar(raiz, 40);
+    insertar(raiz, 60);
+    insertar(raiz, 80);
+
+    // Mostrar el árbol en orden
+    cout << "Recorrido en orden del árbol binario de búsqueda: ";
+    recorrerEnOrden(raiz);
+    cout << endl;
+
+    // Aquí se puede agregar código para liberar la memoria si es necesario
+
+    return 0;
+}
+

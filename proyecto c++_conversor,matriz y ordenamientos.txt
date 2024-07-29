@@ -1,0 +1,282 @@
+//
+Características Principales de C++
+Orientación a Objetos: C++ es un lenguaje de programación orientado a objetos (OOP), lo que permite la creación de clases y objetos, y el uso de conceptos como herencia, polimorfismo y encapsulación.
+
+Control de Recursos: Ofrece un control detallado sobre los recursos del sistema, como la memoria, utilizando punteros y manejo explícito de la memoria (nuevo, delete).
+
+Tipado Estático: Los tipos de datos son verificados en tiempo de compilación, lo que ayuda a detectar errores en el código antes de la ejecución.
+
+Multiplataforma: C++ es compatible con múltiples plataformas, lo que permite que el mismo código se ejecute en diferentes sistemas operativos con poco o ningún cambio.
+
+Compilación Directa a Código Máquina: El código C++ se compila directamente a código máquina, lo que permite la creación de programas altamente eficientes en términos de rendimiento.
+
+Bibliotecas Estándar: C++ cuenta con una rica biblioteca estándar (STL) que incluye contenedores, algoritmos, y funciones útiles para manipulación de datos, operaciones matemáticas y más.
+
+Herencia Múltiple: A diferencia de muchos lenguajes, C++ permite la herencia múltiple, donde una clase puede heredar de múltiples clases base.
+
+Plantillas: C++ ofrece soporte para programación genérica a través de plantillas, permitiendo la creación de funciones y clases genéricas.
+
+Ventajas de C++
+Rendimiento: C++ es conocido por su alto rendimiento y eficiencia debido a la compilación directa a código máquina y el control explícito de los recursos del sistema.
+
+Control Preciso: Permite un control fino sobre el hardware y la memoria, lo que es útil para el desarrollo de sistemas operativos, controladores y software de alto rendimiento.
+
+Versatilidad: Adecuado para una amplia variedad de aplicaciones, desde software de sistemas y aplicaciones de alto rendimiento hasta juegos y aplicaciones de interfaz gráfica de usuario (GUI).
+
+Amplia Comunidad y Recursos: Cuenta con una gran cantidad de recursos y una comunidad activa que contribuye con librerías, herramientas y soporte.
+
+Compatibilidad con C: Los programas escritos en C pueden ser utilizados en C++ con pocas modificaciones, lo que facilita la transición y reutilización de código.
+
+Desventajas de C++
+Complejidad del Lenguaje: La sintaxis y las características avanzadas, como punteros y herencia múltiple, pueden hacer que el lenguaje sea complejo y difícil de aprender para los principiantes.
+
+Gestión Manual de Memoria: El manejo explícito de la memoria puede llevar a errores como fugas de memoria y corrupción, a menos que se tomen medidas cuidadosas.
+
+Tiempo de Compilación: Los programas en C++ pueden tener tiempos de compilación largos, especialmente cuando se utilizan plantillas extensivas.
+
+Compatibilidad entre Compiladores: Las diferencias entre los compiladores pueden llevar a problemas de compatibilidad y portabilidad, aunque esto ha mejorado con el tiempo.
+
+Comparación con Otros Lenguajes Populares
+C++ vs Python:
+
+C++ es más rápido y eficiente en términos de rendimiento, pero Python es más fácil de aprender y usar, y tiene una sintaxis más simple.
+Python ofrece un desarrollo más rápido y es ampliamente utilizado en ciencia de datos, desarrollo web, y scripting, mientras que C++ se usa para desarrollo de sistemas, juegos y aplicaciones de alto rendimiento.
+C++ vs Java:
+
+C++ proporciona un mayor control sobre la memoria y los recursos, mientras que Java tiene una recolección de basura automática que simplifica la gestión de memoria.
+Java es más portátil entre diferentes sistemas operativos gracias a la Máquina Virtual de Java (JVM), mientras que C++ puede requerir ajustes para diferentes plataformas.
+C++ vs C#:
+
+C++ ofrece un control más detallado sobre el hardware y la memoria, mientras que C# (que se ejecuta en la plataforma .NET) proporciona características modernas de lenguaje y un entorno de desarrollo más integrado.
+C# es más fácil de usar para aplicaciones empresariales y de escritorio, mientras que C++ se utiliza en contextos donde el rendimiento es crítico, como en el desarrollo de sistemas y videojuegos.
+Usos Habituales en la Actualidad
+Desarrollo de Juegos: C++ es ampliamente utilizado en la industria de los videojuegos para el desarrollo de motores de juegos y videojuegos de alto rendimiento.
+
+Desarrollo de Sistemas: Se usa para el desarrollo de sistemas operativos, controladores de hardware, y software de sistemas debido a su capacidad para interactuar directamente con el hardware.
+
+Software de Alto Rendimiento: Aplicaciones que requieren una alta eficiencia y rendimiento, como simuladores, software de procesamiento en tiempo real, y aplicaciones científicas.
+
+Aplicaciones Financieras: Muchas aplicaciones en la industria financiera, como sistemas de trading de alta frecuencia, utilizan C++ para su capacidad de manejar operaciones intensivas y de baja latencia.
+
+Software Embebido: C++ se usa en sistemas embebidos donde el control directo sobre el hardware y la eficiencia son importantes.
+
+Aplicaciones de Computación Científica: Utilizado en simulaciones científicas, análisis de datos y aplicaciones que requieren cálculos intensivos.
+
+C++ sigue siendo un lenguaje fundamental en la industria del software debido a su potencia y flexibilidad, a pesar de la creciente popularidad de lenguajes más recientes con enfoques diferentes.
+
+//Programa que realiza acciones a partir de una secuencia de caracteres compuestas por una terna de letras, que tienen asociadas un numero del 1 al 22.
+Para proceder con la actividad este programa, convierte la terna de letras a una sola letra, posteriormente ordena esa conversión por orden alfabetico de menor a mayor utilizando método de ordenamiento por inserción y posteriormente realiza una inversión de la cadena obtenida.
+Los números que tienen asignados las terna de letras, también los toma y les aplica un ordenamiento por selección.
+Una vez realizados los ordenamientos construye una matriz o array biimensional con los array obtenidos.
+De este modo se abarcan o recorren conceptos claves con definición de variables, ingreso de datos y guardo, mostrart datos, condicionales if-else, bucle for, array uni y bidimensionales creación y operación sobre ellos, ejercicios típicos de ordenar por mayor o menor.
+
+//Explicación del Algoritmo de Selección (Simplificada)
+Algoritmo de Selección:
+Encuentra el Mínimo: Busca el número más pequeño en el subarray no ordenado.
+Intercambio: Intercambia el número más pequeño encontrado con el primer número del subarray no ordenado.
+Repite: Mueve el límite del subarray no ordenado hacia adelante y repite los pasos anteriores hasta que todo esté ordenado.
+Ejemplo:
+Para un array [64, 25, 12, 22, 11]:Primera Iteración:
+
+Encuentra el menor número en [64, 25, 12, 22, 11], que es 11.
+Intercambia 11 con 64, resultando en [11, 25, 12, 22, 64].
+Segunda Iteración:
+
+Encuentra el menor número en [25, 12, 22, 64], que es 12.
+Intercambia 12 con 25, resultando en [11, 12, 25, 22, 64].
+Tercera Iteración:
+
+Encuentra el menor número en [25, 22, 64], que es 22.
+Intercambia 22 con 25, resultando en [11, 12, 22, 25, 64].
+Cuarta Iteración:
+
+La lista [25, 64] ya está ordenada.
+El array final ordenado es [11, 12, 22, 25, 64].
+
+//Explicación del Ordenamiento por Inserción
+El ordenamiento por inserción es un algoritmo simple que construye la lista ordenada un elemento a la vez. 
+Cómo Funciona
+Inicio: Empieza con el segundo elemento de la lista (el primero ya está considerado ordenado).
+Comparación: Toma el elemento actual y compáralo con los elementos en la parte ya ordenada.
+Desplazamiento: Mueve los elementos mayores que el elemento actual una posición a la derecha.
+Inserción: Coloca el elemento actual en su lugar correcto.
+Repetición: Repite el proceso con el siguiente elemento hasta que toda la lista esté ordenada.
+Ejemplo con 5 Números
+Supongamos que tienes la lista de números [4, 3, 2, 5, 1].
+
+Paso 1: [4] | 3, 2, 5, 1
+Compara 3 con 4.
+3 es menor, así que mueve 4 una posición a la derecha y coloca 3 en la primera posición.
+Lista ahora: [3, 4] | 2, 5, 1
+
+Paso 2: [3, 4] | 2, 5, 1
+Compara 2 con 4 y 3.
+2 es menor que ambos, así que mueve 3 y 4 una posición a la derecha y coloca 2 en la primera posición.
+Lista ahora: [2, 3, 4] | 5, 1
+
+Paso 3: [2, 3, 4] | 5, 1
+Compara 5 con 2, 3, y 4.
+5 es mayor que todos, así que simplemente se coloca al final.
+Lista ahora: [2, 3, 4, 5] | 1
+
+Paso 4: [2, 3, 4, 5] | 1
+Compara 1 con 2, 3, 4, y 5.
+1 es menor que todos, así que mueve 2, 3, 4, y 5 una posición a la derecha y coloca 1 en la primera posición.
+
+Lista ordenada final: [1, 2, 3, 4, 5]
+
+
+
+
+
+#include <iostream>
+#include <cctype>      // Para la función toupper()
+#include <sstream>    // Para std::istringstream
+#include <string>     // Para std::string
+#include <vector>     // Para std::vector
+#include <algorithm>  // Para std::sort
+
+using namespace std;
+
+// Función para convertir una terna a una letra mayúscula
+char convertirTerna(const string &terna) {
+    if (terna.empty()) return '\0';
+    return toupper(terna[0]);
+}
+
+// Función para invertir una cadena
+string invertirCadena(const string &cadena) {
+    string invertida = cadena;
+    int n = invertida.length();
+    for (int i = 0; i < n / 2; i++) {
+        swap(invertida[i], invertida[n - i - 1]);
+    }
+    return invertida;
+}
+
+// Función para ordenar una cadena usando el algoritmo de ordenamiento por inserción
+string ordenarPorInsercion(string cadena) {
+    int n = cadena.length();
+    for (int i = 1; i < n; i++) {
+        char clave = cadena[i];
+        int j = i - 1;
+        while (j >= 0 && cadena[j] > clave) {
+            cadena[j + 1] = cadena[j];
+            j--;
+        }
+        cadena[j + 1] = clave;
+    }
+    return cadena;
+}
+
+// Función para ordenar un array usando el algoritmo de selección
+void ordenarPorSeleccion(vector<int> &arr) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++) {
+        // Encontrar el índice del menor elemento en la parte no ordenada
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        // Intercambiar el elemento actual con el menor encontrado
+        if (minIndex != i) {
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}
+
+// Función para imprimir la matriz
+void imprimirMatriz(const vector<pair<char, int>> &matriz) {
+    for (const auto &p : matriz) {
+        cout << p.first << " " << p.second << endl;
+    }
+}
+
+// Función para imprimir solo los números pares con sus letras asociadas
+void imprimirNumerosPares(const vector<pair<char, int>> &matriz) {
+    for (const auto &p : matriz) {
+        if (p.second % 2 == 0) {
+            cout << p.first << " " << p.second << endl;
+        }
+    }
+}
+
+int main() {
+    string secuencia;
+    string terna;
+    string resultado;
+    char letraConvertida;
+
+    // Solicitar la secuencia de ternas al usuario
+    cout << "Ingrese la secuencia de ternas separadas por espacios: ";
+    getline(cin, secuencia);
+
+    // Leer la secuencia de ternas y convertir cada una
+    std::istringstream stream(secuencia);
+    while (stream >> terna) {
+        letraConvertida = convertirTerna(terna);
+        resultado += letraConvertida;
+    }
+
+    // Crear una copia de la cadena convertida para inversión y ordenamiento
+    string resultadoInvertido = invertirCadena(resultado);
+    string resultadoOrdenado = ordenarPorInsercion(resultadoInvertido);
+
+    // Mostrar los resultados
+    cout << "Cadena transformada: " << resultado << endl;
+    cout << "Cadena transformada e invertida: " << resultadoInvertido << endl;
+    cout << "Cadena invertida ya ordenada: " << resultadoOrdenado << endl;
+
+    // Solicitar los números asociados a cada terna
+    cout << "Ingrese los números asociados a cada terna separados por espacios: ";
+    string numerosInput;
+    getline(cin, numerosInput);
+    std::istringstream numStream(numerosInput);
+    vector<int> numeros;
+    int numero;
+
+    // Leer los números en el vector
+    int cantidadNumeros = resultado.size(); // Cantidad esperada de números
+    numeros.resize(cantidadNumeros); // Redimensionar el vector
+
+    for (int i = 0; i < cantidadNumeros; ++i) {
+        if (numStream >> numero) {
+            numeros[i] = numero;
+        } else {
+            cout << "Error en la entrada de números." << endl;
+            return 1;
+        }
+    }
+
+    // Verificar si el tamaño del vector coincide con el tamaño de la secuencia inicial
+    if (numeros.size() == resultado.size()) {
+        // Ordenar el array de números por selección
+        ordenarPorSeleccion(numeros);
+
+        // Crear una matriz de pares (letra, número)
+        vector<pair<char, int>> matriz;
+        for (int i = 0; i < resultado.size(); ++i) {
+            matriz.push_back({resultado[i], numeros[i]});
+        }
+
+        // Ordenar la matriz por letra
+        sort(matriz.begin(), matriz.end(), [](const pair<char, int> &a, const pair<char, int> &b) {
+            return a.first < b.first;
+        });
+
+        // Mostrar la matriz completa
+        cout << "Matriz con letras y números ordenados: " << endl;
+        imprimirMatriz(matriz);
+
+        // Mostrar solo los números pares con sus letras asociadas
+        cout << "Números pares con letras asociadas: " << endl;
+        imprimirNumerosPares(matriz);
+    } else {
+        cout << "Verifique los números ingresados y vuelva a ejecutar." << endl;
+    }
+
+    return 0;
